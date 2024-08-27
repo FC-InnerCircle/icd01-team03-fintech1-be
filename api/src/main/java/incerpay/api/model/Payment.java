@@ -13,10 +13,14 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Payment {
 
-    private String id;
-    private double amount;
-    private String currency;
-    private String status;
-    private LocalDateTime createdAt;
-
+    private String uuid;
+    private int price;
+    private String cardNumber;
+    private String cvc;
+    private String expireDate;
+    private String cardCompany;
+    private int installmentPeriod;
+    private String customerId;
+    private String paymentType;
+    private String timestamp;
 }
