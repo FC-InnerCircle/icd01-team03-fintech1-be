@@ -2,6 +2,9 @@ package incerpay.api.model;
 
 import lombok.*;
 
+/**
+ * 클라이언트가 보내는 결제 요청 데이터
+ */
 @Getter
 @Setter
 @NoArgsConstructor

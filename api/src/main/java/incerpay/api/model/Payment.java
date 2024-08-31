@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Payment {
 
-    private String uuid;
+    private String id;
     private int price;
     private String cardNumber;
     private String cvc;
