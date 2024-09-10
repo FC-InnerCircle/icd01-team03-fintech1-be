@@ -3,6 +3,7 @@ package incerpay.api.controller;
 import incerpay.api.exception.UnauthorizedException;
 import incerpay.api.model.CardListResponse;
 import incerpay.api.service.CardService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -23,6 +24,7 @@ public class CardController {
      * @return
      * @throws Exception
      */
+    @Tag(name = "카드 리스트 확인", description = "카드사 정보 리스트 조회")
     @GetMapping("")
     public CardListResponse getCardList(@RequestHeader("Authorization") String clientKey) {
 

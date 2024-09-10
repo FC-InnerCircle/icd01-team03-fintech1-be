@@ -13,6 +13,7 @@ import java.util.List;
 @Setter
 public class CardListResponse {
 
+    /* 카드사 정보 리스트 */
     private List<Card> cards;
 
 }

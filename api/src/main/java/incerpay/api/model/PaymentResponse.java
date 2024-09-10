@@ -10,7 +10,10 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 public class PaymentResponse {
+
+    /* 결제 고유 식별자 */
     private String uuid;
+    /* 결제 요청 시간 */
     private String timestamp;
 
 }

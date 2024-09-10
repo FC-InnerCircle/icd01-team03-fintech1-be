@@ -39,9 +39,13 @@ public class PaymentService {
      */
     public Payment createPayment(String apikey, PaymentRequest paymentRequest) {
 
-        // TODO 카드 서비스 API 를 호출하여 결재 키 채번
+        /* pay-gate */
+        // 카드 유효성 검사
+        // 결재 ID 채번 (카드 서비스)
+        // 카드사 API 호출
+        // 4조에서 Test Card 데이터 기반으로 결제 결과 응답
 
-        String url = "/api/payments";
+        String url = "/payment";
         Mono<Payment> paymentMono = webClient.post()
                 .uri(url)
                 .header(HttpHeaders.AUTHORIZATION, apikey)  // Authorization 헤더를 백엔드 서버로 전달

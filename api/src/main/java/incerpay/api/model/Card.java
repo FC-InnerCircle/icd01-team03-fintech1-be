@@ -11,7 +11,11 @@ import lombok.Setter;
 @Setter
 public class Card {
 
-    private String cardNumber;
+    /* 카드사 코드 */
+    private String cardCd;
+    /* 카드사명 */
+    private String cardCompany;
+    /* 무이자 할부 개월수 */
     private int installmentPeriod;
 
 }

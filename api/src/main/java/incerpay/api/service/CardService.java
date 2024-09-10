@@ -32,7 +32,7 @@ public class CardService {
         // TODO 4조에서 가져오기
 
         // 상점 서비스 API 를 호출하여 카드 관련 커스텀 데이터를 요청한다
-        String url = "/api/cards";
+        String url = "/card-list";
         Mono<CardListResponse> cardListResponseMono = webClient.get()
                 .uri(url)
                 .header(HttpHeaders.AUTHORIZATION, apikey)  // Authorization 헤더를 백엔드 서버로 전달
