@@ -8,19 +8,15 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Getter
-@Setter
-@NoArgsConstructor
 @AllArgsConstructor
 public class Payment {
 
-    private String id;
-    private int price;
-    private String cardNumber;
-    private String cvc;
-    private String expireDate;
-    private String cardCompany;
-    private int installmentPeriod;
-    private String customerId;
-    private String paymentType;
+    /* 걸제 ID = 주문번호 */
+    private String paymentId;
+    /* 거래 ID */
+    private String transactionId;
+    /* 상태 */
+    private String status;
+
     private String timestamp;
 }

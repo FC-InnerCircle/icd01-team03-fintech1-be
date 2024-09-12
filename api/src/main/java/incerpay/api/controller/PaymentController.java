@@ -1,9 +1,6 @@
 package incerpay.api.controller;
 
-import incerpay.api.exception.ValidationException;
-import incerpay.api.model.Payment;
-import incerpay.api.model.PaymentRequest;
-import incerpay.api.model.PaymentResponse;
+import incerpay.api.model.*;
 import incerpay.api.service.PaymentService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
@@ -37,12 +34,28 @@ public class PaymentController {
 
         // 백엔드 서버의 응답을 결제 응답으로 생성
         PaymentResponse paymentResponse = new PaymentResponse(
-                payment.getId(),
+                payment.getPaymentId(),
                 payment.getTimestamp()
         );
 
         // 수정된 응답을 클라이언트에게 반환
         // TODO 성공 시 리다이렉트 URL
         return ResponseEntity.ok(paymentResponse);
+    }
+
+    @Tag(name = "결제 취소")
+    @PostMapping("/{paymentId}/cancel")
+    public ResponseEntity<String> cancelPayment(@PathVariable String paymentId, @RequestBody CancelPaymentRequestDto request) {
+
+        Payment canceledPayment = paymentService.cancel(paymentId, request.getUuid());
+        return ResponseEntity.ok("success");
+    }
+
+    @Tag(name = "결제 승인")
+    @PostMapping("/{paymentId}/confirm")
+    public ResponseEntity<String> confirmPayment(@PathVariable String paymentId, @RequestBody ConfirmPaymentRequestDto request) {
+
+        Payment confirmedPayment = paymentService.confirm(paymentId, request.getUuid());
+        return ResponseEntity.ok("success");
     }
 }

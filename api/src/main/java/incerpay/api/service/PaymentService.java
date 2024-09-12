@@ -1,5 +1,7 @@
 package incerpay.api.service;
 
+import incerpay.api.exception.IllegalArgumentException;
+import incerpay.api.exception.IllegalStateException;
 import incerpay.api.model.Payment;
 import incerpay.api.model.PaymentRequest;
 import jakarta.annotation.PostConstruct;
@@ -53,7 +55,45 @@ public class PaymentService {
                 .retrieve()
                 .bodyToMono(Payment.class);
         Payment payment = paymentMono.block();
-        paymentMap.put(payment.getId(), payment);
+        paymentMap.put(payment.getPaymentId(), payment);
+
+        return payment;
+    }
+
+    /*
+    결제 취소
+     */
+    public Payment cancel(String paymentId, String transactionId) {
+
+        // TODO 결제 조회
+        Payment payment = this.createPayment("temp", null);
+        if (payment == null) {
+            throw new IllegalArgumentException("Payment not found");
+        }
+
+        if (!"APPROVED".equals(payment.getStatus())) {
+            throw new IllegalStateException("");
+        }
+
+        // TODO 취소 요청을 전송
+
+        return payment;
+    }
+
+    /* 결제 승인 */
+    public Payment confirm(String paymentId, String transactionId) {
+
+        // TODO 결제 조회
+        Payment payment = this.createPayment("temp", null);
+        if (payment == null) {
+            throw new IllegalArgumentException("Payment not found");
+        }
+
+        if (!"PENDING".equals(payment.getStatus())) {
+            throw new IllegalStateException("");
+        }
+
+        // TODO 승인 요청 전송
 
         return payment;
     }
